@@ -18,6 +18,7 @@ const_fn = []
 [dependencies.spin]
 version = "0.9.8"
 optional = true
+path = "../spin-rs"
 
 [dev-dependencies]
 criterion = "0.5.1"
