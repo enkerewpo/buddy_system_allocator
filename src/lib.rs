@@ -11,12 +11,13 @@ extern crate spin;
 extern crate alloc;
 
 mod mutex;
+
 #[macro_use]
 mod print;
 
 #[cfg(feature = "use_spin")]
-// use spin::Mutex;
-use crate::mutex::Mutex;
+use spin::Mutex;
+// use crate::mutex::Mutex;
 #[cfg(feature = "use_spin")]
 use core::alloc::GlobalAlloc;
 use core::alloc::Layout;
@@ -97,7 +98,6 @@ impl<const ORDER: usize> Heap<ORDER> {
       self.free_list[size.trailing_zeros() as usize].push(current_start as *mut usize);
       current_start += size;
     }
-    _info!("(add_to_heap) total = {}", total);
     self.total += total;
   }
 
